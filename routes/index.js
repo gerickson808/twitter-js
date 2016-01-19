@@ -15,14 +15,14 @@ router.get('/', function (req, res) {
 router.get('/users/:name', function(req, res) {
   var name = req.params.name;
   var list = tweetBank.find( {name: name} );
-  res.render( 'index', { title: 'Twitter.js - Posts by '+name, tweets: list } );
+  res.render( 'index', { title: 'Twitter.js - Posts by '+name, tweets: list, name: name, showForm: true } );
 });
 
 // say that a client GET requests the path /tweets/:id
 router.get('/tweets/:id', function(req, res) {
   var id = Number(req.params.id);
   var list = tweetBank.find( {id: id} );
-  res.render( 'index', { title: 'Twitter.js - Post #'+id, tweets: list } );
+  res.render( 'index', { title: 'Twitter.js - Post #'+id, tweets: list} );
 });
 
 router.post('/tweets', function(req, res) {
