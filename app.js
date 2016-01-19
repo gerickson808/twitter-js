@@ -1,6 +1,6 @@
-var swig = require('swig');
 var express = require('express');
 var app = express();
+var swig = require('swig');
 var output;
 var people = {
 	1:{name: 'Gandalf'},
@@ -10,6 +10,11 @@ var people = {
 
 var title = "Template Madness Y'all";
 var locals = {title:title, people:people};
+
+app.engine('html', swig.renderFile);
+app.set('view engine', 'html');
+app.set('views', './views');
+
 
 app.use(function(response, request, next){
 	output = "";
@@ -26,9 +31,8 @@ app.get('/', function(request, response, next){
 	next();
 });
 
-app.get('/swiggums', function(request, response, next){
-	output = swig.renderFile('./views/index.html',locals);
-	next();
+app.get('/swiggums', function(request, response){
+	response.render('index', locals);
 });
 
 app.get('/news', function(request, response, next){
