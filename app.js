@@ -11,10 +11,15 @@ var people = {
 var title = "Template Madness Y'all";
 var locals = {title:title, people:people};
 
+swig.setDefaults({ cache: false });
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', './views');
 
+
+app.get('/swiggums', function(request, response){
+	response.render('index', locals);
+});
 
 app.use(function(response, request, next){
 	output = "";
@@ -31,9 +36,6 @@ app.get('/', function(request, response, next){
 	next();
 });
 
-app.get('/swiggums', function(request, response){
-	response.render('index', locals);
-});
 
 app.get('/news', function(request, response, next){
 	output += "Hey, there's some Bird News!\n";
