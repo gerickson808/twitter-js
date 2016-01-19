@@ -29,10 +29,9 @@ var getFakeTweet = function() {
   var awesome_adj = ['awesome', 'breathtaking', 'amazing', 'funny', 'sweet', 'cool', 'wonderful', 'mindblowing'];
   return "Fullstack Academy is " + randArrayEl(awesome_adj) + "! The instructors are just so " + randArrayEl(awesome_adj) + ". #fullstacklove #codedreams";
 };
-
+var id = 0;
 for(var i=0; i<10; i++) {
-	var id = i;
-  module.exports.add( getFakeName(), getFakeTweet(), id);
+  module.exports.add( getFakeName(), getFakeTweet(), id++);
 }
 
 // console.log(data);
