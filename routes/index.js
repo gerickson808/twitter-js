@@ -3,8 +3,8 @@ var router = require('express').Router();
 var tweetBank = require('../tweetBank');
 var bodyParser = require('body-parser');
 
-bodyParser.json();
-bodyParser.urlencoded();
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded());
 
 router.get('/', function (req, res) {
   var tweets = tweetBank.list();
