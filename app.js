@@ -3,16 +3,6 @@ var app = express();
 var swig = require('swig');
 var routes = require('./routes');
 
-var output;
-var people = {
-	1:{name: 'Gandalf'},
-	2:{name: 'Frodo'},
-	3:{name: 'Hermione'}
-};
-
-var title = "Template Madness Y'all";
-var locals = {title:title, people:people};
-
 swig.setDefaults({ cache: false });
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -44,6 +34,15 @@ app.listen(3000, function(){
 
 
 
+// var output;
+// var people = {
+// 	1:{name: 'Gandalf'},
+// 	2:{name: 'Frodo'},
+// 	3:{name: 'Hermione'}
+// };
+
+// var title = "Template Madness Y'all";
+// var locals = {title:title, people:people};
 
 
 // app.get('/swiggums', function(request, response){
