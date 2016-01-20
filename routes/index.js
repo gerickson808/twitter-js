@@ -1,8 +1,12 @@
 var router = require('express').Router();
-// could use one line instead: var router = require('express').Router();
 var tweetBank = require('../tweetBank');
 var bodyParser = require('body-parser');
 
+
+
+
+
+module.exports = function(io){
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded());
 
@@ -28,8 +32,16 @@ router.get('/tweets/:id', function(req, res) {
 router.post('/tweets', function(req, res) {
   var name = req.body.name;
   var text = req.body.text;
-  tweetBank.add(name, text);
+  io.sockets.emit('new_tweet', tweetBank.add(name, text));
   res.redirect('/');
 });
 
-module.exports = router;
+
+return router;
+};
+
+
+
+
+
+
