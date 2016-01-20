@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var morgan  = require('morgan');
 var swig = require('swig');
 var routes = require('./routes');
 var socketio = require('socket.io');
@@ -13,9 +14,14 @@ swig.setDefaults({ cache: false });
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', './views');
+//This tells express to log via morgan
+//and morgan to log in the "combined" pre-defined format
+app.use(morgan('combined'))
 
+//gives access to static files
 app.use(express.static('public'));
 
+//does get/post based on routes module.export
 app.use('/', routes(io));
 
 

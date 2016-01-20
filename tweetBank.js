@@ -2,9 +2,9 @@ var _ = require("lodash");
 var data = [];
 
 function add (name,text){
-	var line = {name:name, text: text, id: id()};
-	data.push(line);
-	return line;
+	var tweetObj = {name:name, text: text, id: id()};
+	data.push(tweetObj);
+	return tweetObj;
 }
 
 function list () {

@@ -80,22 +80,22 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
   </body>
   <script src="/socket.io/socket.io.js"></script>
-<script>
-  // Load the socket.io library above, then connect to the server.
-  // Because the socket.io server is being run on the same server as your 
-  // Express instance, you can connect() without any arguments.
-  var socket = io.connect();
+  <script>
+    // Load the socket.io library above, then connect to the server.
+    // Because the socket.io server is being run on the same server as your 
+    // Express instance, you can connect() without any arguments.
+    var socket = io.connect();
 
-  // When 'new_tweet' events are fired, do something with the packaged tweet
-  socket.on('new_tweet', function (tweet) { 
-    // console.log(tweet); //nothing is logging???
-    // alert('Refreshing... check the console...'); //this is printing twice.... why?
+    // When 'new_tweet' events are fired, do something with the packaged tweet
+    socket.on('new_tweet', function (tweet) { 
+      // console.log(tweet); //nothing is logging???
+      // alert('Refreshing... check the console...');
 
-    // some logic to add the new tweet to the DOM…
-    var tweetNode = document.createElement("P");        
-    var tweetNodeText = document.createTextNode("<div class='tweetbox'><img></div><div class='content'><div class='by'><a href='/users/"+tweet.name+"'>"+tweet.name+"</a></div><a href='/tweets/"+tweet.id+"'>"+tweet.text+"</a></div>");
-    tweetNode.appendChild(tweetNodeText);
-    document.getElementsById('tweetsList').appendChild(tweetNode);
-  }); 
-</script>
+      // some logic to add the new tweet to the DOM…
+      var tweetNode = document.createElement("P");        
+      var tweetNodeText = document.createTextNode("<div class='tweetbox'><img></div><div class='content'><div class='by'><a href='/users/"+tweet.name+"'>"+tweet.name+"</a></div><a href='/tweets/"+tweet.id+"'>"+tweet.text+"</a></div>");
+      tweetNode.appendChild(tweetNodeText);
+      document.getElementsById('tweetsList').appendChild(tweetNode);
+    }); 
+  </script>
 </html>
