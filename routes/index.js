@@ -1,9 +1,9 @@
 var router = require('express').Router();
-// could use one line instead: var router = require('express').Router();
 var tweetBank = require('../tweetBank');
 var bodyParser = require('body-parser');
 
 module.exports = function(io){
+
 	router.use(bodyParser.json());
 	router.use(bodyParser.urlencoded());
 
